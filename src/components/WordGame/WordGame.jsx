@@ -36,7 +36,7 @@ export default function WordGame() {
 		"Z",
 	];
 	// Words array to use for guessing values
-	const guessThis = ["flamingo", "sunny", "tropical"];
+	const guessThis = ["watermelon", "sunny", "tropical"];
 
 	// initial state for word will be blank
 	const [word, setWord] = useState("");
@@ -96,7 +96,7 @@ export default function WordGame() {
 				<SuccessRate incorrect={incorrect.length} />
 			</div>
 			<p className="game__hidden-word">{hideGuessThis}</p>
-			<section>
+			<section className="game__alphabet-container">
 				{alphabets.map((letter, index) => (
 					<button
 						className="game__button"
