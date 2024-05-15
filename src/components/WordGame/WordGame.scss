@@ -1,3 +1,57 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
+
+.game {
+	margin: 1rem;
+
+	&__button {
+		margin: 0.5em;
+		border: 2px solid;
+		min-width: 1.5rem;
+		max-width: 1.5rem;
+		min-height: 1.5rem;
+		max-height: 1.5rem;
+		padding: 0.25rem;
+		line-height: 0.5;
+		color: #951e5a;
+		background: none;
+
+		&:hover {
+			cursor: pointer;
+			border-color: #facb73;
+		}
+
+		&:disabled {
+			opacity: 0.3;
+			animation: none;
+			border-color: inherit;
+			cursor: not-allowed;
+		}
+	}
+
+	&__hidden-word {
+		border: 1px solid red;
+	}
+}
+
+.success-rate {
+	//FIXME: once everything else is positioned, change the position of the success box
+	position: absolute;
+	bottom: 3rem;
+	left: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 9rem;
+	height: 5.25rem;
+	font-size: 1rem;
+	text-align: center;
+	background-image: url(../../assets/images/styled-box.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	&__counter {
+		font-size: 1.5rem;
+	}
+}

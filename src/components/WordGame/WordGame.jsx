@@ -73,11 +73,11 @@ export default function WordGame() {
 			correct.length &&
 			word.split("").every((letter) => correct.includes(letter))
 		)
-			setStatus("won!!!");
+			setStatus("won 🎉");
 	}, [correct]);
 
 	useEffect(() => {
-		if (incorrect.length === 6) setStatus("lost :(");
+		if (incorrect.length === 6) setStatus("lost 😿");
 	}, [incorrect]);
 
 	useEffect(reset, []);
@@ -90,18 +90,22 @@ export default function WordGame() {
 		.join("");
 
 	return (
-		<div>
-			<SuccessRate incorrect={incorrect.length} />
-			<p className="wordHidden">{hideGuessThis}</p>
+		<div className="game">
+			<div className="success-rate">
+				Incorrect guesses:
+				<SuccessRate incorrect={incorrect.length} />
+			</div>
+			<p className="game__hidden-word">{hideGuessThis}</p>
 			<section>
 				{alphabets.map((letter, index) => (
 					<button
+						className="game__button"
 						// to disable the button once its used as a guess, whether right or wrong
 						disabled={
 							correct.includes(letter) ||
 							incorrect.includes(letter) ||
-							status === "won!!!" ||
-							status === "lost :("
+							status === "won 🎉" ||
+							status === "lost 😿"
 						}
 						// to handle the onClick, when the player guesses by pressing the letter
 						onClick={() => guessInput(letter)}
