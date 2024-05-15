@@ -3,14 +3,19 @@
 @use "./styles/partials/typography" as *;
 
 body {
+	box-sizing: border-box;
 	margin: 0;
 	font-family: "Handlee";
-	color: $primary-font-color;
+	color: $secondary-color-dark;
 	background-image: url(../src/assets/images/background-image.svg);
 	background-repeat: no-repeat;
-	background-size: cover;
+}
 
-	@include tablet {
-		background-image: url(../src/assets/images/background-image-tablet.svg);
-	}
+p {
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+
+.main-container {
+	@include background-overlay;
 }

@@ -3,119 +3,130 @@ import { useEffect, useState } from "react";
 import SuccessRate from "../GuessTracker/GuessTracker";
 import Notify from "../Notify/Notify";
 import wordList from "../../data/data.json";
+import Brianna from "../../assets/images/flamingo/brianna.png";
 
 import "./WordGame.scss";
 
 export default function WordGame() {
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-  // Words array to use for guessing values
-  const guessThis = wordList.map((item) => item.word);
-  console.log(guessThis);
-  // initial state for word will be blank
-  const [word, setWord] = useState("");
-  const [correct, setCorrect] = useState([]);
-  const [incorrect, setIncorrect] = useState([]);
-  const [status, setStatus] = useState("");
+	const alphabet = [
+		"A",
+		"B",
+		"C",
+		"D",
+		"E",
+		"F",
+		"G",
+		"H",
+		"I",
+		"J",
+		"K",
+		"L",
+		"M",
+		"N",
+		"O",
+		"P",
+		"Q",
+		"R",
+		"S",
+		"T",
+		"U",
+		"V",
+		"W",
+		"X",
+		"Y",
+		"Z",
+	];
+	// Words array to use for guessing values
+	const guessThis = wordList.map((item) => item.word);
 
-  const randomizeWord = () =>
-    setWord(
-      guessThis[Math.floor(Math.random() * guessThis.length)].toUpperCase()
-    );
+	// initial state for word will be blank
+	const [word, setWord] = useState("");
+	const [correct, setCorrect] = useState([]);
+	const [incorrect, setIncorrect] = useState([]);
+	const [status, setStatus] = useState("");
 
-  // We want to reset the state at the beginning of a game, and when we play again, which will use the randomizeWord function
-  const reset = () => {
-    randomizeWord();
-    setCorrect([]);
-    setIncorrect([]);
-    setStatus("");
-  };
+	const randomizeWord = () =>
+		setWord(
+			guessThis[Math.floor(Math.random() * guessThis.length)].toUpperCase()
+		);
 
-  // Function to handle on click when player guesses the letter
-  // Function will determine whether the input is for a value that exists in the hidden word or not
+	// We want to reset the state at the beginning of a game, and when we play again, which will use the randomizeWord function
+	const reset = () => {
+		randomizeWord();
+		setCorrect([]);
+		setIncorrect([]);
+		setStatus("");
+	};
 
-  const guessInput = (letter) => {
-    if (word.includes(letter)) {
-      setCorrect([...correct, letter]);
-    } else {
-      setIncorrect([...incorrect, letter]);
-    }
-  };
+	// Function to handle on click when player guesses the letter
+	// Function will determine whether the input is for a value that exists in the hidden word or not
 
-  useEffect(() => {
-    if (
-      correct.length &&
-      word.split("").every((letter) => correct.includes(letter))
-    )
-      setStatus("won 🎉");
-  }, [correct]);
+	const guessInput = (letter) => {
+		if (word.includes(letter)) {
+			setCorrect([...correct, letter]);
+		} else {
+			setIncorrect([...incorrect, letter]);
+		}
+	};
 
-  useEffect(() => {
-    if (incorrect.length === 6) setStatus("lost 😿");
-  }, [incorrect]);
+	useEffect(() => {
+		if (
+			correct.length &&
+			word.split("").every((letter) => correct.includes(letter))
+		)
+			setStatus("won 🎉");
+	}, [correct, word]);
 
-  useEffect(reset, []);
+	useEffect(() => {
+		if (incorrect.length === 6) setStatus("lost 😿");
+	}, [incorrect]);
 
-  // This function will mask the word to the player
-  // The map ternary function will reveal the correct letters, as they are guessed, otherwise the word will remain a blank
-  const hideGuessThis = word
-    .split("")
-    .map((letter) => (correct.includes(letter) ? letter : "_"))
-    .join("");
+	useEffect(reset, []);
 
-  return (
-    <div className="game">
-      <div className="success-rate">
-        Incorrect guesses:
-        <SuccessRate incorrect={incorrect.length} />
-      </div>
-      <p className="game__hidden-word">{hideGuessThis}</p>
-      <section className="game__alphabet-container">
-        {alphabet.map((letter, index) => (
-          <button
-            className="game__button"
-            // to disable the button once its used as a guess, whether right or wrong
-            disabled={
-              correct.includes(letter) ||
-              incorrect.includes(letter) ||
-              status === "won 🎉" ||
-              status === "lost 😿"
-            }
-            // to handle the onClick, when the player guesses by pressing the letter
-            onClick={() => guessInput(letter)}
-            key={index}
-          >
-            {letter}
-          </button>
-        ))}
-        <Notify status={status} word={word} reset={reset} />
-      </section>
-    </div>
-  );
+	// This function will mask the word to the player
+
+	// The map ternary function will reveal the correct letters, as they are guessed, otherwise the word will remain a blank
+	const hideGuessThis = word
+		.split("")
+		.map((letter) => (correct.includes(letter) ? letter : "_"))
+		.join("");
+
+	return (
+		<div className="game">
+			<div className="success-rate">
+				Incorrect guesses:
+				<SuccessRate incorrect={incorrect.length} />
+			</div>
+			<p className="game__hidden-word">{hideGuessThis}</p>
+			<section className="game__alphabet-container">
+				{alphabet.map((letter, index) => (
+					<button
+						className="game__button"
+						// to disable the button once its used as a guess, whether right or wrong
+						disabled={
+							correct.includes(letter) ||
+							incorrect.includes(letter) ||
+							status === "won 🎉" ||
+							status === "lost 😿"
+						}
+						// to handle the onClick, when the player guesses by pressing the letter
+						onClick={() => guessInput(letter)}
+						key={index}
+					>
+						{letter}
+					</button>
+				))}
+				<Notify
+					status={status}
+					word={word}
+					reset={reset}
+				/>
+			</section>
+			<img
+				className="game__brianna"
+				src={Brianna}
+				alt="cartoon flamingo"
+			/>
+		</div>
+	);
 }

@@ -5,7 +5,16 @@
 .game {
 	margin: 1rem;
 
+	&__brianna {
+		position: absolute;
+		bottom: 1.25rem;
+		right: -0.75rem;
+		max-height: 13rem;
+	}
+
 	&__alphabet-container {
+		padding-left: 2rem;
+		padding-right: 2rem;
 		max-width: 100vw;
 	}
 
@@ -19,8 +28,8 @@
 		max-height: $alphabet-btns-sizing;
 		padding: 0.5rem 0;
 		line-height: 0.5;
-		color: #951e5a;
-		background: none;
+		color: $secondary-color-dark;
+		background: rgba(255, 255, 255, 0.45);
 
 		&:hover {
 			cursor: pointer;
@@ -36,15 +45,26 @@
 	}
 
 	&__hidden-word {
-		margin-top: 9.5rem;
+		margin: 0 auto;
+		margin-top: 2rem;
 		margin-bottom: 1rem;
-		font-size: 150%;
+		border-radius: 0.5rem;
+		padding-left: 0.75rem;
+		padding-right: 0.5rem;
+		padding-top: 0.25rem;
+		font-size: 180%;
 		letter-spacing: 0.5rem;
 		text-align: center;
+		background-color: $overlay-color;
+		width: max-content;
 	}
 
 	&__notification {
+		margin-top: 1.75rem;
+		min-height: 7.25rem;
+		border-radius: 0.5rem;
 		text-align: center;
+		background-color: $overlay-color;
 	}
 
 	&__notification-button {
@@ -73,10 +93,8 @@
 }
 
 .success-rate {
-	position: absolute;
-	top: 1.5rem;
-	left: 1.5rem;
 	display: flex;
+	margin: 2.5rem auto;
 	flex-direction: column;
 	justify-content: center;
 	box-shadow: 0 0 0 4px $secondary-color-light,
