@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import SuccessRate from "./SuccessRate";
+import SuccessRate from "../GuessTracker/GuessTracker";
 import Notify from "./Notify";
 
-export default function Hangman() {
+export default function WordGame() {
   const alphabets = [
     "A",
     "B",

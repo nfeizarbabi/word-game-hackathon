@@ -1,13 +1,11 @@
-import Hangman from "./components/Hangman";
+import WordGame from "./components/WordGame/WordGame";
 
 import "./App.scss";
 
-function App() {
-	return (
-		<>
-			<Hangman />
-		</>
-	);
+export default function App() {
+  return (
+    <>
+      <WordGame />
+    </>
+  );
 }
-
-export default App;
