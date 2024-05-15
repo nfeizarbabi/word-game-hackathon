@@ -1,0 +1,132 @@
+[
+  {
+    "id": 0,
+    "word": "mango",
+    "hint": "fruit 🍇"
+  },
+  {
+    "id": 1,
+    "word": "pineapple",
+    "hint": "fruit 🍇"
+  },
+  {
+    "id": 2,
+    "word": "beach",
+    "hint": "place 📍"
+  },
+  {
+    "id": 3,
+    "word": "surfing",
+    "hint": "activity 💃🏻"
+  },
+  {
+    "id": 4,
+    "word": "flamingo",
+    "hint": "animal 🦄"
+  },
+  {
+    "id": 5,
+    "word": "turtle",
+    "hint": "animal 🦄"
+  },
+  {
+    "id": 6,
+    "word": "umbrella",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 7,
+    "word": "coconut",
+    "hint": "fruit 🍇"
+  },
+  {
+    "id": 8,
+    "word": "sandals",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 9,
+    "word": "gelato",
+    "hint": "food 🍡"
+  },
+  {
+    "id": 10,
+    "word": "watermelon",
+    "hint": "fruit 🍇"
+  },
+  {
+    "id": 11,
+    "word": "dolphin",
+    "hint": "animal 🦄"
+  },
+  {
+    "id": 12,
+    "word": "sunscreen",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 13,
+    "word": "summer",
+    "hint": "season ⛅️"
+  },
+  {
+    "id": 14,
+    "word": "sailboats",
+    "hint": "transport 🚀"
+  },
+  {
+    "id": 15,
+    "word": "swimsuit",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 16,
+    "word": "volleyball",
+    "hint": "activity 💃🏻"
+  },
+  {
+    "id": 17,
+    "word": "swimming",
+    "hint": "activity 💃🏻"
+  },
+  {
+    "id": 18,
+    "word": "floatie",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 19,
+    "word": "kayaking",
+    "hint": "activity 💃🏻"
+  },
+  {
+    "id": 20,
+    "word": "Lemonade",
+    "hint": "drink ⛱️"
+  },
+  {
+    "id": 21,
+    "word": "bonfire",
+    "hint": "activity 💃🏻"
+  },
+  {
+    "id": 22,
+    "word": "popsicle",
+    "hint": "food 🍡"
+  },
+  {
+    "id": 23,
+    "word": "starfish",
+    "hint": "animal 🦄"
+  },
+  {
+    "id": 24,
+    "word": "shades",
+    "hint": "utility ⛱️"
+  },
+  {
+    "id": 25,
+    "word": "swimsuit",
+    "hint": "utility ⛱️"
+  }
+]

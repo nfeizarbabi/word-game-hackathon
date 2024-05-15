@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import SuccessRate from "../GuessTracker/GuessTracker";
 import Notify from "../Notify/Notify";
+import wordList from "../../data/data.json";
+import { useParams } from "react-router-dom";
 
 export default function WordGame() {
-  const alphabets = [
+  const alphabet = [
     "A",
     "B",
     "C",
@@ -31,8 +33,11 @@ export default function WordGame() {
     "Y",
     "Z",
   ];
+
   // Words array to use for guessing values
-  const guessThis = ["flamingo", "sunny", "tropical"];
+  // const guessThis = ["flamingo", "mango", "sunny"];
+  const guessThis = wordList.map((item) => item.word);
+  console.log(guessThis);
 
   // initial state for word will be blank
   const [word, setWord] = useState("");
@@ -89,7 +94,7 @@ export default function WordGame() {
     <div>
       <p className="wordHidden">{hideGuessThis}</p>
       <section>
-        {alphabets.map((letter, index) => (
+        {alphabet.map((letter, index) => (
           <button
             // to disable the button once its used as a guess, whether right or wrong
             disabled={
