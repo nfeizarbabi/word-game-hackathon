@@ -3,5 +3,14 @@
 @use "./styles/partials/typography" as *;
 
 body {
+	margin: 0;
 	font-family: "Handlee";
+	color: $primary-font-color;
+	background-image: url(../src/assets/images/background-image.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	@include tablet {
+		background-image: url(../src/assets/images/background-image-tablet.svg);
+	}
 }

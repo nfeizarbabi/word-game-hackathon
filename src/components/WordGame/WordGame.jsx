@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+
 import SuccessRate from "../GuessTracker/GuessTracker";
 import Notify from "../Notify/Notify";
 import wordList from "../../data/data.json";
-import { useParams } from "react-router-dom";
+
+import "./WordGame.scss";
 
 export default function WordGame() {
   const alphabet = [
@@ -33,12 +35,9 @@ export default function WordGame() {
     "Y",
     "Z",
   ];
-
   // Words array to use for guessing values
-  // const guessThis = ["flamingo", "mango", "sunny"];
   const guessThis = wordList.map((item) => item.word);
   console.log(guessThis);
-
   // initial state for word will be blank
   const [word, setWord] = useState("");
   const [correct, setCorrect] = useState([]);
@@ -74,11 +73,11 @@ export default function WordGame() {
       correct.length &&
       word.split("").every((letter) => correct.includes(letter))
     )
-      setStatus("won!!!");
+      setStatus("won 🎉");
   }, [correct]);
 
   useEffect(() => {
-    if (incorrect.length === 6) setStatus("lost :(");
+    if (incorrect.length === 6) setStatus("lost 😿");
   }, [incorrect]);
 
   useEffect(reset, []);
@@ -91,17 +90,22 @@ export default function WordGame() {
     .join("");
 
   return (
-    <div>
-      <p className="wordHidden">{hideGuessThis}</p>
-      <section>
+    <div className="game">
+      <div className="success-rate">
+        Incorrect guesses:
+        <SuccessRate incorrect={incorrect.length} />
+      </div>
+      <p className="game__hidden-word">{hideGuessThis}</p>
+      <section className="game__alphabet-container">
         {alphabet.map((letter, index) => (
           <button
+            className="game__button"
             // to disable the button once its used as a guess, whether right or wrong
             disabled={
               correct.includes(letter) ||
               incorrect.includes(letter) ||
-              status === "won!!!" ||
-              status === "lost :("
+              status === "won 🎉" ||
+              status === "lost 😿"
             }
             // to handle the onClick, when the player guesses by pressing the letter
             onClick={() => guessInput(letter)}
@@ -110,7 +114,6 @@ export default function WordGame() {
             {letter}
           </button>
         ))}
-        <SuccessRate incorrect={incorrect.length} />
         <Notify status={status} word={word} reset={reset} />
       </section>
     </div>
