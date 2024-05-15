@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SuccessRate from "../GuessTracker/GuessTracker";
-import Notify from "./Notify";
+import Notify from "../Notify/Notify";
 
 export default function WordGame() {
   const alphabets = [
